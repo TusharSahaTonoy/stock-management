@@ -30,3 +30,7 @@ Route::get('migrate',function(){
     // Artisan::call('cache:clear');
     // Artisan::call('key:generate');
 });
+
+Route::get('artisan/{command}', function($command){
+    Artisan::call($command);
+});
