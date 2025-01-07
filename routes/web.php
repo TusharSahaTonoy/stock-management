@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductStockController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,13 @@ use Illuminate\Support\Facades\Route;
 HomeController::Routes();
 ProductController::Routes();
 ProductStockController::Routes();
+
+Route::get('migrate',function(){
+
+    Artisan::call('migrate');
+    // Artisan::call('view:clear');
+    // Artisan::call('route:clear');
+    // Artisan::call('config:clear');
+    // Artisan::call('cache:clear');
+    // Artisan::call('key:generate');
+});

@@ -116,9 +116,9 @@
                     <td>${rowCount}</td>
                     <td>${productName}</td>
                     <td>
-                        <input type="number" name="products[${productId}][quantity]" class="form-control" min="1" max="${productStock}" value="1">
+                        <input type="number" name="products[${productId}][quantity]" class="form-control" min="1" max="${productStock}" value="1" step="0.01">
                     </td>
-                    <td><input type="number" name="products[${productId}][price]" class="form-control" value="${productPrice}"> </td>
+                    <td><input type="number" name="products[${productId}][price]" class="form-control" value="${productPrice}" step="0.01"> </td>
                     
                     <td>
                         <button type="button" class="btn btn-danger btn-sm remove-from-sell-list">Remove</button>

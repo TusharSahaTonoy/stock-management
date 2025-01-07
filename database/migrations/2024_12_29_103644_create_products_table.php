@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('details')->nullable();
-            $table->text('image');
-            $table->float('stock');
-            $table->sting('unit', 10);
-            $table->smallInteger('status');
+            $table->text('image')->nullable();
+            $table->string('unit', 10)->nullable();
+            $table->smallInteger('status')->default('1');
             $table->timestamps();
         });
     }

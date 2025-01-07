@@ -49,13 +49,12 @@ class ProductStockController extends Controller
                     'product_id' => $prodId,
                     'quantity' => $qty,
                     'price' => $price,
-                    'action_type' => 'in',
-                    'datetime' => now()
+                    'action_type' => 'in'
                 ]);
 
                 // stock update
                 // self::productStockUpdate($prodId, $type, $price, $qty);
-                $prodVari = ProductStock::firstOrCreate(['product_id' => $prodId, 'price' => $price]);
+                $prodVari = ProductStock::firstOrCreate(['product_id' => $prodId, 'price' => $price], ['stock' => 0]);
                 $prodVari->stock = $prodVari->stock + $qty;
                 $prodVari->save();
                 // end
@@ -109,8 +108,7 @@ class ProductStockController extends Controller
                     'product_id' => $stock->product->id,
                     'quantity' => $item['quantity'],
                     'price' => $item['price'],
-                    'action_type' => 'out',
-                    'datetime' => now()
+                    'action_type' => 'out'
                 ]);
 
                 $total = ($item['price'] - $stock->price) * $item['quantity'];
