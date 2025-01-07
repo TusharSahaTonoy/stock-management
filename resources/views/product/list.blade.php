@@ -14,7 +14,7 @@
                     {{-- <th>Buy Price</th>
                     <th>Sell Price</th> --}}
                     <th>Details</th>
-                    <th>Actions</th>
+                    {{-- <th>Actions</th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -28,14 +28,14 @@
                         {{-- <td>${{ number_format($product->buy_price, 2) }}</td>
                         <td>${{ number_format($product->sell_price, 2) }}</td> --}}
                         <td>{{ $product->details }}</td>
-                        <td>
+                        {{-- <td>
                             <a href="{{ route('product.edit', $product->id) }}" class="btn btn-primary btn-sm">Edit</a>
                             <form action="{{ route('product.delete', $product->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
                             </form>
-                        </td>
+                        </td> --}}
                     </tr>
                 @empty
                     <tr>
