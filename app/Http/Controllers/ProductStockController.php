@@ -40,22 +40,19 @@ class ProductStockController extends Controller
 
         DB::beginTransaction();
         try {
-            foreach ($request->product_id as $key => $item) {
-                $prodId = $request->product_id[$key];
-                $qty = $request->price[$key];
-                $price = $request->price[$key];
+            foreach ($request->products as $prodId => $item) {
 
                 ProductStockLog::create([
                     'product_id' => $prodId,
-                    'quantity' => $qty,
-                    'price' => $price,
+                    'quantity' => $item['qty'],
+                    'price' => $item['price'],
                     'action_type' => 'in'
                 ]);
 
                 // stock update
                 // self::productStockUpdate($prodId, $type, $price, $qty);
-                $prodVari = ProductStock::firstOrCreate(['product_id' => $prodId, 'price' => $price], ['stock' => 0]);
-                $prodVari->stock = $prodVari->stock + $qty;
+                $prodVari = ProductStock::firstOrCreate(['product_id' => $prodId, 'price' => $item['price']], ['stock' => 0]);
+                $prodVari->stock = $prodVari->stock + $item['qty'];
                 $prodVari->save();
                 // end
 
